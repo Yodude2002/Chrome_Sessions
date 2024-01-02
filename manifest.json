@@ -1,0 +1,22 @@
+{
+  "name": "Sessions",
+  "description": "Saves sessions, listing them in the Reading List",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [
+    "storage",
+    "sidePanel",
+    "tabs",
+    "tabGroups"
+  ],
+  "action": {
+    "default_title": "Sessions",
+    "default_icon": "icon.png"
+  },
+  "side_panel": {
+    "default_path": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
