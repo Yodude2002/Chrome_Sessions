@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sessions</title>
+    <script src="popup.js"></script>
+    <style>
+        :root {
+          --color-primary: #255fa6;
+          --color-on-primary: white;
+          --color-primary-container: #d5e3ff;
+          --color-on-primary-container: #001b3c;
+          --color-surface: #fdfbff;
+          --color-on-surface: #1a1c1e;
+          --color-surface-variant: #e0e2ec;
+          --color-on-surface-variant: #43474e;
+          --color-outline: #74777f;
+          --color-error: #ba1a1a;
+          --color-on-error: #ffffff;
+          --color-error-container: #ffdad6;
+          --color-on-error-container: #410002;
+        }
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --color-primary: #a8c8ff;
+            --color-on-primary: #003061;
+            --color-primary-container: #004689;
+            --color-on-primary-container: #d5e3ff;
+            --color-surface: #1a1c1e;
+            --color-on-surface: #e3e2e6;
+            --color-surface-variant: #43474e;
+            --color-on-surface-variant: #c4c6cf;
+            --color-outline: #8e9199;
+            --color-error: #ffb4ab;
+            --color-on-error: #690005;
+            --color-error-container: #93000a;
+            --color-on-error-container: #ffdad6;
+          }
+        }
+        button {
+            width: 100%;
+            min-height: 48px;
+            border-radius: 24px;
+        }
+        button.filled {
+          background-color: var(--color-primary);
+          color: var(--color-on-primary);
+          border-style: none;
+        }
+        button:active {
+          filter: contrast(0.7) brightness(1.15);
+        }
+        button.icon {
+          background-color: transparent;
+          color: transparent;
+          border-style: none;
+        }
+        body {
+          background-color: var(--color-surface);
+        }
+        h1 {
+          color: var(--color-on-surface);
+        }
+        div.separator_dark {
+          background-color: var(--color-on-surface);
+          height: 2px;
+        }
+
+        div#element_container {
+          margin: 8px;
+        }
+        div.list_container {
+          margin: 8px 0;
+        }
+        div.list_container.expanded > div.list_item {
+          border-radius: 8px 8px 0 0;
+        }
+        div.list_item {
+          min-height: 48px;
+          background-color: var(--color-surface-variant);
+          border-radius: 8px;
+          display: flex;
+          flex-wrap: nowrap;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-top: 8px;
+        }
+        div.list_text {
+          color: var(--color-on-surface-variant);
+          margin: auto 8px;
+          font-size: medium;
+          overflow: hidden;
+          text-wrap: nowrap;
+        }
+        div.list_open {
+          height: 32px;
+          width: 32px;
+          min-width: 32px;
+          background-color: var(--color-primary);
+          border-radius: 4px;
+          margin: 8px;
+        }
+        button.list_open_in {
+          background-image: url(open_in_new_FILL0_wght400_GRAD0_opsz24.png);
+        }
+        button.list_delete {
+          background-image: url(delete_FILL0_wght400_GRAD0_opsz24.png);
+        }
+        button.list_edit_note {
+          background-image: url(edit_note_FILL0_wght400_GRAD0_opsz24.png);
+        }
+        button.list_btn {
+          min-height: 32px;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        div.list_drawer {
+          display: none;
+          min-height: 48px;
+          background-color: var(--color-on-surface-variant);
+          border-radius: 0 0 8px 8px;
+          padding: 8px;
+        }
+        div.list_container.expanded > div.list_drawer {
+          display: block;
+        }
+        div.list_item > div.btn_hover {
+          display: none;
+        }
+        div.list_item:hover > div.btn_hover {
+          display: none;
+        }
+
+        div.favicon_container {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+          flex-direction: row;
+        }
+        img.favicon {
+          width: 32px;
+          height: 32px;
+          margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+<button class="filled" id="button_save_session">Save Session</button>
+
+<h1>Sessions</h1>
+<div class="separator_dark"></div>
+
+<div id="element_container">
+  <div class="list_container expanded">
+    <div class="list_item">
+      <div class="list_text">Group Name</div>
+      <div class="list_open">
+        <button class="icon list_open_in list_btn"></button>
+      </div>
+    </div>
+    <div class="list_drawer">
+      <div class="list_item" style="width: min-content; margin: 0 auto">
+        <div class="list_open">
+          <button class="icon list_edit_note list_btn"></button>
+        </div>
+        <div class="list_open" style="background-color: var(--color-error)">
+          <button class="icon list_delete list_btn"></button>
+        </div>
+      </div>
+      <div class="list_item">
+        <div class="list_text favicon_container">
+          <img class="favicon" src="icon.png" alt="Name of Site">
+          Group Name
+        </div>
+        <div class="list_open btn_hover" style="background-color: var(--color-error)">
+          <button class="icon list_delete list_btn"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
