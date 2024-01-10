@@ -100,13 +100,17 @@ function makeListItem(group: Group): HTMLDivElement {
             item.appendChild(createDiv(["list_open"], (img) => {
                 img.appendChild(apply(document.createElement("button"), (btn) => {
                     btn.classList.add("icon", "list_open_in", "list_btn");
-                    btn.onclick = () => {
+                    btn.onclick = (e) => {
+                        e.stopPropagation();
                         openTabGroup(group).catch(console.error)
                     };
                 }))
             }))
 
-            item.onclick = () => openDrawer(item);
+            item.onclick = (e) => {
+                e.stopPropagation();
+                openDrawer(item);
+            }
         }))
 
         container.appendChild(createDiv(["list_drawer"], (drawer) => {
@@ -117,7 +121,8 @@ function makeListItem(group: Group): HTMLDivElement {
                 toolbox.appendChild(createDiv(["list_open"], (edit) => {
                     edit.appendChild(apply(document.createElement("button"), (b) => {
                         b.classList.add("icon", "list_edit_note", "list_btn");
-                        b.onclick = () => {
+                        b.onclick = (e) => {
+                            e.stopPropagation();
                             renameGroup(group);
                         }
                     }))
@@ -126,7 +131,8 @@ function makeListItem(group: Group): HTMLDivElement {
                     del.style.backgroundColor = "var(--color-error)";
                     del.appendChild(apply(document.createElement("button"), (btn) => {
                         btn.classList.add("icon", "list_delete", "list_btn");
-                        btn.onclick = () => {
+                        btn.onclick = (e) => {
+                            e.stopPropagation();
                             deleteGroup(group);
                         }
                     }))
@@ -154,7 +160,8 @@ function makeListItem(group: Group): HTMLDivElement {
                         }))
                     }))
 
-                    el.onclick = () => {
+                    el.onclick = (e) => {
+                        e.stopPropagation();
                         if (tab.url) {
                             chrome.tabs.create({
                                 url: tab.url
